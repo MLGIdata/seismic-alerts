@@ -36,8 +36,9 @@ Y los objetivos que poseen un plazo máximo de 4 semanas:
 ## KPIs propuestos.
 En los KPIs planteados utilizamos la frase “alta peligrosidad” que deberá ser definida previamente. Según la USGS que compara valores de Magnitud e Intensidad, este valor será entre 6 y 9 de magnitud en la escala de Richter .
 
-1. Daños por Localidades en base a la distancia del epicentro de los sismos.
-   Cruzar los datos que se poseen con los daños por Localidades para medir las consecuencias de un sismo según la lejanía con su epicentro, es fundamental para definir qué radio tiene que tener la alarma en medida de la ubicación geográfica del epicentro, buscando no generar alarmas para personas que no estén en riesgo.
+1. Daños en base a la profundidad del sismo.
+    Cruzar los datos que se poseen con los daños por Localidades para medir las consecuencias de un sismo según su profundidad, es fundamental para definir la peligrosidad de un determinado sismo. 
+
 2. Frecuencia histórica de los sismos más intensos en México.
     Este KPI tiene como importancia medir la frecuencia de los sismos relevantes, para así poder predecir un rango esperable de sismos de una determinada magnitud, para cuando el sistema de alarmas y la base de datos estén en funcionamiento.
 3. Desfase temporal entre el evento y la carga de los datos en las APIs utilizadas.
