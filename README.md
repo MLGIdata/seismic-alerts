@@ -2,12 +2,12 @@
 
 > “Working towards global standardization of seismological networks and effective communication to the civilian community. ”
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+
 En este repositorio se encuentra el desarrollo de un proyecto que tiene como objetivo la implementación y creación de herramientas para el acceso fácil y eficiente a la información sismológica de México, Estados Unidos y Japón. Más específicamente, el proyecto comprende el desarrollo de:
 - Una alerta sismológica con los datos al día de los sismos en México.
 - Un modelo de aprendizaje no supervisado que agrupe los sismos de acuerdo a su peligrosidad.
 - Un dashboard interactivo.
-
-[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Equipo
 |Nombre          | Correo                      | GitHub                                          |
