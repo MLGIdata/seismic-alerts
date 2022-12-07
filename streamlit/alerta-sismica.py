@@ -144,7 +144,6 @@ with st.container():
             # Cuando los terremotos son de peligrosidad media o
             # alta, las recomendaciones varian con la densidad poblacional
             tipoLocalidad = last_mx.iloc[0]['densityLabel']
-            tipoLocalidad = 'rural'
 
             if tipoLocalidad == 'ciudad':
                 option = st.selectbox(
