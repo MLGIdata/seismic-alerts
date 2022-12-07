@@ -67,7 +67,7 @@ last_mx['ratioT'] = scaler.fit_transform(last_mx.ratio.to_numpy().reshape(-1,1))
 
 
 # Abrimos el modelo de machine learning entrenado
-with open("./data/model.pkl", "rb") as f:
+with open("streamlit/data/model.pkl", "rb") as f:
     model = pickle.load(f)
 
 # Realizamos la predicción
