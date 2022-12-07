@@ -49,7 +49,6 @@ munch==2.5.0
 mysql==0.0.3
 mysql-connector-python==8.0.31
 mysql-connector-python-rf==2.2.2
-mysqlclient==2.1.1
 nest-asyncio==1.5.5
 networkx==2.8.8
 numpy==1.22.4
