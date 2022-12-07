@@ -92,6 +92,9 @@ def transform_mx_historic(df):
 
     for columna in type_float:
             df[columna] = format_float(df, columna)
+    # Nos aseguramos que soo hayan sismos de magnitud mayor a 3
+    df = df[df.magnitude >= 3]
+    
     return df
 
 def get_states_mx(df):
