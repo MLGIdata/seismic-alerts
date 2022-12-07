@@ -113,7 +113,7 @@ with st.container():
         message = 'Sigue las recomendaciones a continuación'
         emoji = '⚠️'
     
-    st.image('figures/peligrosidad.png', width=450)
+    st.image('streamlit/figures/peligrosidad.png', width=450)
     st.markdown('''<div style="background-color:#{color}; border: 2px solid #{color}; border-radius: 5px; text-align:center; vertical-align: middle;">
     <a><h4>{emoji}</h4><h3>Sismo en {state}</h3><h6><br>Fecha: {date} &nbsp; &nbsp; Hora: {time}</h6></a></div>'''.format(color=color, emoji=emoji, state=state, date=date, time=time), unsafe_allow_html=True)
     if peligro == 'muy baja':
@@ -135,10 +135,10 @@ with st.container():
         st.markdown('''### Recomendaciones''')
 
         if peligro == 'muy baja':
-            st.image("figures/calm.png")
+            st.image("streamlit/figures/calm.png")
 
         elif peligro == 'baja':
-            st.image("figures/alert_chill.png")
+            st.image("streamlit/figures/alert_chill.png")
 
         else:
             # Cuando los terremotos son de peligrosidad media o
@@ -162,16 +162,16 @@ with st.container():
                 ('Interior', 'Exterior'))
             
             if option == 'Interior (piso 2 o menor)':
-                st.image("figures/alert_lower.png")
+                st.image("streamlit/figures/alert_lower.png")
 
             elif option == 'Interior (piso 2 o mayor)':
-                st.image("figures/alert_upper.png")
+                st.image("streamlit/figures/alert_upper.png")
 
             elif option == 'Interior':
-                st.image("figures/alert_lower.png")
+                st.image("streamlit/figures/alert_lower.png")
 
             elif option == 'Exterior':
-                st.image("figures/alert_exterior.png")
+                st.image("streamlit/figures/alert_exterior.png")
 
     with empty2:
             st.empty()
