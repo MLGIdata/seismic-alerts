@@ -1,3 +1,8 @@
+'''
+Script de airflow carga continua de datos sísmicos de México desde USGS. A partir de la última hora de carga
+se cargan los datos nuevos hasta el momento en que se corre el script.
+'''
+
 from airflow import DAG
 from datetime import datetime, timedelta
 from airflow.operators.python_operator import PythonOperator

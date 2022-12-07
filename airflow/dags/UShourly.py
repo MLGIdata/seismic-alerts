@@ -1,3 +1,9 @@
+'''
+Este script carga continua de datos sísmicos de USA desde USGS. A partir de la última hora de carga
+se cargan los datos nuevos hasta el momento en que se corre el script.
+Para que funcione se tiene que correr primero US_JP_MX_historic.py
+'''
+
 import os.path                                      # manejo de paths
 import pandas as pd                                 # manejo de datos
 from datetime import datetime, date                 # manejo de fechas
@@ -5,7 +11,25 @@ from dateutil.relativedelta import relativedelta    # delta de tiempo
 from utils import *                                 # funciones comunes para los scripts
 
 def load_us(place, path, short_name):
-    '''Función para la carga continua de archivos de USGS'''
+    """Función para la carga continua de archivos de USGS
+    
+    Parameters
+    ----------
+    place : str
+        String con el lugar a considerar. Opciones en Estados Unidos: 
+        "US": Estados Unidos contiguos, "AK": Alaska , "HI": Hawaii
+    
+    path : str
+        Path de la carpeta de los datos
+
+    short_name : str
+        Nombre de referencia para los archivos generados
+
+    Returns
+    ------
+    df : DataFrame
+        DataFrame con columna de estado
+    """
 
     # Leemos la útltima fecha de actualización
     txt_date = os.path.join(path,'last_date_{}.txt'.format(short_name))
@@ -71,7 +95,7 @@ def load_us(place, path, short_name):
 
 def main():
 
-    PATH = '..\datasets'
+    PATH = 'data'
     SHORT_NAME_US = 'usa_usgs'
 
     load_us(place='US', path=PATH, short_name=SHORT_NAME_US)

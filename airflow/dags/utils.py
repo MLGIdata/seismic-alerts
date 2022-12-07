@@ -16,8 +16,10 @@ def format_str(df, column):
     ----------
     df : DataFrame
         Dataframe donde se encuentra la columna a formatear
+    
     column : str
         Nombre de la columna a formatear
+    
     Returns
     ------
     df: DataFrame
@@ -33,8 +35,10 @@ def format_int(df, column):
     ----------
     df : DataFrame
         Dataframe donde se encuentra la columna a formatear
+    
     column : str
         Nombre de la columna a formatear
+    
     Returns
     ------
     df: DataFrame
@@ -50,8 +54,10 @@ def format_float(df, column):
     ----------
     df : DataFrame
         Dataframe donde se encuentra la columna a formatear
+    
     column : str
         Nombre de la columna a formatear
+    
     Returns
     ------
     df: DataFrame
@@ -67,6 +73,7 @@ def format_epoch_time(x):
     ----------
     x : str
         String con el tiempo en formato Unix
+    
     Returns
     ------
     str
@@ -76,15 +83,17 @@ def format_epoch_time(x):
     return datetime.fromtimestamp(time)#.strftime('%Y-%m-%d %H:%M:%S.%f')
 
 def get_state(row, country ='United States'):
-    """A partir de una fila que posea latitud y longitud, te devuelve el Estado
+    """A partir de una fila que posea latitud y longitud, te devuelve el estado
     si el estado se encuentra en el país escogido
     
     Parameters
     ----------
     row : Series
         Fila de un dataframe
+    
     country : str
         Nombre del país en el idioma oficial
+    
     Returns
     ------
     str
@@ -112,6 +121,7 @@ def separate_date_time(row):
     row : Series
         Fila de un dataframe que contenga columna Time, donde se encuentra
         la hora y fecha con formato "fechaThoraZ"
+
     Returns
     ------
     str
@@ -188,12 +198,13 @@ def transform_usgs(df):
     return df
 
 def get_states_usa(df, place = 'US'):
-    """Obtener los estados para los datos de Estados Unidos
+    """Obtiene los estados para los datos sísmicos de Estados Unidos
     
     Parameters
     ----------
     df : DataFrame
         DataFrame de eventos sísmicos de USGS formateado con `transform_usgs`
+    
     place : str
         String con el lugar a considerar. Las opciones son US para Estados Unidos
         continental, AK para Alaska y HI para Hawaii
@@ -205,7 +216,7 @@ def get_states_usa(df, place = 'US'):
     """
     if place == 'US':
         # leemos los estados de USA
-        states = pd.read_csv('../datasets/us-states.csv', skiprows=1)
+        states = pd.read_csv('data/us-states.csv', skiprows=1)
 
         # Eliminamos registros de otros paises
         other_country = ['Mx', 'Canada']
@@ -248,7 +259,7 @@ def get_states_usa(df, place = 'US'):
         df = df[~df.state.isna()]
 
     # Colocamos el idLocation
-    path_locations = os.path.join('../datasets','locations.csv') ############### Poner path del archivo de localidades
+    path_locations = os.path.join('data','locations.csv') ############### Poner path del archivo de localidades
     df_state = pd.read_csv(path_locations) 
     df_state = df_state[df_state.country == 'US']
 
@@ -326,7 +337,7 @@ def get_states_jp(df):
     df.loc[df.state.isna(),'state'] = df[df.state.isna()].apply(lambda row: get_state(row, country='中国'), axis=1)
 
     # Colocamos el idLocation
-    path_locations = os.path.join('../datasets','locations.csv') ############### Poner path del archivo de localidades
+    path_locations = os.path.join('data','locations.csv') ############### Poner path del archivo de localidades
     df_state = pd.read_csv(path_locations) 
     df_state = df_state[df_state.country == 'JP']
     df = pd.merge(df, df_state, left_on= ['state'], right_on=['state'], how = 'left')
@@ -343,12 +354,15 @@ def load_jp(path, short_name, type='hourly'):
     ----------
     path : str
         Path de la carpeta de los datos
+
     short_name : str
         Nombre de referencia para los archivos generados
+
     type : str
         Tipo de carga. Opciones 'hourly': carga desde la última fecha de carga
         hasta el momento que se corra la función, 'historic': carga los datos 
         desde 01/01/1988 hasta el 23/11/2022
+
     Returns
     ------
     df : DataFrame
@@ -412,11 +426,14 @@ def usgs_query(start_date, end_date, place='US'):
     ----------
     start_date : datetime
         Fecha de inicio de la extracción
+
     end_date : datetime
         Fecha final de la extracción
+
     place : str
         País para el cual se desea extraer datos. Opciones: 'US': Estados Unidos
         Continental, 'AK': Alaska, 'HI': Hawaii, 'JP': Japón, 'MX': México
+
     Returns
     ------
     url : str
@@ -479,6 +496,7 @@ def read_usgs(url):
     ----------
     url : str
         URL del GeoJSON proviniente de IRIS
+
     Returns
     ------
     df : DataFrame
@@ -501,14 +519,15 @@ def iris_query(start_date, end_date):
     ----------
     start_date : datetime
         Fecha de inicio de la extracción
+
     end_date : datetime
         Fecha final de la extracción
+
     Returns
     ------
     url : str
         URL de IRIS para extraer eventos sísmicos de Japón
     """
-    '''Crea el query de IRIS a partir de las fechas y el lugar '''
 
     base_url = 'http://service.iris.edu/fdsnws/event/1/query?'
     # parámetros
@@ -541,6 +560,7 @@ def read_iris(url):
     ----------
     url : str
         URL del GeoCSV proviniente de IRIS
+        
     Returns
     ------
     df : DataFrame

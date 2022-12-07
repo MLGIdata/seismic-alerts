@@ -1,3 +1,9 @@
+'''
+Este script carga continua de datos sísmicos de México desde USGS. A partir de la última hora de carga
+se cargan los datos nuevos hasta el momento en que se corre el script.
+Para que funcione se tiene que correr primero US_JP_MX_historic.py
+'''
+
 import os.path                                      # manejo de paths
 import pandas as pd                                 # manejo de datos
 from datetime import datetime, date                 # manejo de fechas
@@ -5,7 +11,20 @@ from dateutil.relativedelta import relativedelta    # delta de tiempo
 from utils import *                                 # funciones comunes para los scripts
 
 def get_states_mx(df):
-    states = pd.read_csv('../datasets/locations.csv')
+    """Obtiene los estados para los datos sísmicos de México obtenidos de USGS
+    
+    Parameters
+    ----------
+    df : DataFrame
+        DataFrame de eventos sísmicos de USGS formateado con `transform_usgs`
+        
+    Returns
+    ------
+    df : DataFrame
+        DataFrame con columna de estado
+    """
+    
+    states = pd.read_csv('data/locations.csv')
     df.loc[:, 'state'] = df.apply(lambda row: get_state(row, country='México'), axis=1)
     df.state = df.state.str.normalize('NFKD').str.encode('ascii', errors='ignore').str.decode('utf-8')
     df = df.dropna()
@@ -16,6 +35,25 @@ def get_states_mx(df):
     return df
 
 def load_mx(path, short_name, place='MX'):
+    """Carga y tranformación de los datos sísmicos de México
+    
+    Parameters
+    ----------
+    df : DataFrame
+        DataFrame de eventos sísmicos de USGS formateado con `transform_usgs`
+    
+    short_name : str
+        Nombre de referencia para los archivos generados
+
+    place : str
+        String con el lugar a considerar. MX es el default
+
+    Returns
+    ------
+    df : DataFrame
+        DataFrame con columna de estado
+    """
+    
     # Leemos la útltima fecha de actualización
     txt_date = os.path.join(path,'last_date_{}.txt'.format(short_name))
 
@@ -63,7 +101,7 @@ def load_mx(path, short_name, place='MX'):
 
 def main():
 
-    PATH = '..\datasets'
+    PATH = 'data'
     SHORT_NAME_MX = 'mx_sns'
 
     load_mx(place='MX', path=PATH, short_name=SHORT_NAME_MX)
