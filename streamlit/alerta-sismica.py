@@ -15,6 +15,7 @@ st.set_page_config(
 
 # Conexión a MySQL en RDS
 # Inicializamos la conexión
+@st.experimental_singleton
 def init_connection():
     return mysql.connector.connect(**st.secrets["mysql"])
 
