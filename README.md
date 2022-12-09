@@ -101,7 +101,7 @@ El script para entrenar el modelo de aprendizaje automático se encuentra en la 
 # Alerta sísmica<a name="alerta"></a>
 El alerta sísmica se diseñó para informar a la población mexicana sobre los sismos de una manera fácil de comprender para todo cualquier persona. El nivel de alerta está dado por la predicción de la peligrosidad del sismo hecha por el modelo de aprendizaje automático. Las recomendaciones sobre que hacer durante el sismo son distintas para las ciudades, pueblos y zonas rurales, de manera que sean realmente útiles para la comunidad.
 
-Esta aplicación fue realizada utilizando streamlit y se encuentre en [este link](alertasismicamexico.streamlit.app).
+Esta aplicación fue realizada utilizando streamlit y se encuentre en [este link](https://alertasismicamexico.streamlit.app).
 # Licencia<a name="licencia"></a>
 
 El uso de este trabajo está licenciado bajo [GNU General Public License v3.0 (GNU GPLv3)](https://choosealicense.com/licenses/gpl-3.0/).
