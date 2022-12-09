@@ -4,7 +4,9 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-Note: This README file is written in Spanish. To go to the English version [click here](README_EN.md)
+> **Note**<br>
+> This README file is written in Spanish. To go to the English version [click here](README_EN.md).
+
  **Tabla de Contenido:**
  ---
 
