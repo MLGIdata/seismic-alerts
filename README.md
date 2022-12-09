@@ -98,7 +98,7 @@ Los grupos de clasificación se puede observar en dos dimensiones. Sin embargo, 
   <img src="figuras/groups.png" />
 </p>
 
-El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link]()
+El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link]().
 
 El script para entrenar el modelo de aprendizaje automático se encuentra en la carpeta `scripts` del repositorio.
 # Alerta sísmica<a name="alerta"></a>

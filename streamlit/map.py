@@ -47,7 +47,7 @@ scaler = StandardScaler()
 df['ratio'] = df.depth/df.magnitude
 df['ratioT'] = scaler.fit_transform(df.ratio.to_numpy().reshape(-1,1))
 
-with open("data/model.pkl", "rb") as f:
+with open("streamlit/data/model.pkl", "rb") as f:
     model = pickle.load(f)
 
 # Realizamos la predicción
