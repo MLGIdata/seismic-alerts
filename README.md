@@ -69,7 +69,13 @@ Airflow se encarga de correr DAGs individuales para cada pais en donde los datos
 ## Almacenamiento
 Todo esta almacenado en servicios de AWS, donde el balde AWS S3 al recibir los datos estandarizados necesita de AWS Glue como interprete y transportador para poder llevarlos hacia una base de datos MySQL montada en AWS RDS.
 ## Esquema de la base de datos
-Tiene un esquema de copo de nieve donde se usa la tabla de hechos seism como centro, las tablas location y density proveen mas informacion al analysta al hacer queries, pero solo si le es necesaria Despues de que el dato es cargado en AWS RDS, ya es libre de ser accedido posteriormente por:
+Tiene un esquema de copo de nieve donde se usa la tabla de hechos *seism* como centro, las tablas *location* y *density* proveen mas informacion al analista al hacer queries, pero solo si le es necesaria. Así, la base de datos es de la siguiente forma:
+
+<p align="center">
+  <img src="figuras/database.png" />
+</p>
+
+Despues de que el dato es cargado en AWS RDS, ya es libre de ser accedido posteriormente por:
 - El modelo de Machine Learning basado en la libreria de Scikit-learn
 - La pagina web de alertas montada en Streamlit
 - El dashboard analitico hecho en Power Bi
