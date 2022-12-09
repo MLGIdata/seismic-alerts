@@ -92,7 +92,7 @@ The classification groups can be observed in two dimensions. However, the differ
   <img src="figuras/groups.png" />
 </p>
 
-The result of the classification can be visualized in an interactive map made in streamlit where the last 1000 earthquakes per country are plotted. It can be found at [this link].(https://seismap.streamlit.app/).
+The result of the classification can be visualized in an interactive map made in streamlit where the last 1000 earthquakes per country are plotted. It can be found at [this link](https://seismap.streamlit.app/).
 
 The script for training the machine learning model is located in the `scripts` folder of the repository.
 # Seismic alert<a name="alerta"></a>
