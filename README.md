@@ -4,20 +4,80 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
-En este repositorio se encuentra el desarrollo de un proyecto que tiene como objetivo la implementación y creación de herramientas para el acceso fácil y eficiente a la información sismológica de México, Estados Unidos y Japón. Más específicamente, el proyecto comprende el desarrollo de:
-- Una alerta sismológica con los datos al día de los sismos en México.
-- Un modelo de aprendizaje no supervisado que agrupe los sismos de acuerdo a su peligrosidad.
-- Un dashboard interactivo.
+ **Tabla de Contenido:**
+ ---
 
-## Equipo
-|Nombre          | Correo                      | GitHub                                          |
-|----------------|-----------------------------|-------------------------------------------------|
-|Gustavo Martínez| martinezb.mail@gmail.com    |[gusofficial](https://github.com/gusofficial)    |
-|Iván Dellanque  | ivandellanque01@gmail.com   |[IDell49](https://github.com/IDell49)            |
-|Matias Harper   | matiasnaranjo_14@hotmail.com|[Matias-Harper](https://github.com/Matias-Harper)|
-|Leonel Revelo   | leonel_revelo@hotmail.com   |[leo1489](https://github.com/leo1489)            |
-|Mariana Vivas   | marianaivivas@gmail.com     |[marianaiv](https://github.com/marianaiv)        |
+- [El proyecto ](#el-proyecto-)
+- [Equipo ](#equipo-)
+- [El repositorio](#el-repositorio)
+- [Datos](#datos)
+  - [Sísmicos](#sísmicos)
+  - [Densidad poblacional](#densidad-poblacional)
+  - [Daños](#daños)
+- [Pipeline](#pipeline)
+- [Modelo de agrupamiento de sismos](#modelo-de-agrupamiento-de-sismos)
+- [Alerta sísmica](#alerta-sísmica)
+- [Licencia](#licencia)
 
-# Licencia <a name="license"></a>
+# El proyecto <a name="proyecto"></a>
+
+En este repositorio se encuentra el desarrollo de un proyecto que tiene como objetivo la implementación y creación de herramientas para el acceso fácil y eficiente a la información sismológica de México, Estados Unidos y Japón. Los sismos son eventos naturales que pueden causar grandes daños a nivel estructural y humano. Por esto, es de interés para la sociedad la predicción de estos eventos. Sin embargo, hasta la fecha ningún ente o comunidad científica ha pronosticado un gran terremoto. Así, los esfuerzos se enfocan en la mitigación a largo plazo de los riesgos de terremotos y en mejoras a corto plazo, ayudando a mejorar la seguridad y organización ciudadana.
+
+Teniendo en cuenta las mitigaciones a corto plazo, se plantea un proyecto en el cual:
+
+- Se cree una base de datos depurada que contemple los datos de las tres naciones de forma estandarizada y se actualice continuamente.
+- Implementar mecanismos de comunicación y alerta a la comunidad civil en un lenguaje intuitivamente interpretable.
+  
+Esto se logró mediante:
+- La creación de una base de datos estandarizada utilizando MySQL en el servicio RDS de AWS, con carga automatizada con Airflow.
+- El desarrollo de un modelo de aprendizaje no supervisado para la clasificación de los sismos de acuerdo a su "peligrosidad".
+- La implementación de una alerta sísmica para México que informa sobre la peligrosidad de un sismos de acuerdo al modelo descrito anteriormente y recomendaciones de acuerdo a características poblacionales del lugar del evento.
+
+# Equipo <a name="equipo"></a>
+|Nombre          | Correo                     | GitHub                                          | Linkedin|
+|----------------|----------------------------|-------------------------------------------------|---------|
+|Gustavo Martínez|martinezb.mail@gmail.com    |[gusofficial](https://github.com/gusofficial)    | -       |
+|Iván Dellanque  |ivandellanque01@gmail.com   |[IDell49](https://github.com/IDell49)            |[ivandellanque](https://www.linkedin.com/in/ivandellanque/)|
+|Matias Harper   |matiasnaranjo_14@hotmail.com|[Matias-Harper](https://github.com/Matias-Harper)|[matias-naranjo-harper](https://www.linkedin.com/in/matias-naranjo-harper/)|
+|Leonel Revelo   |leonel_revelo@hotmail.com   |[leo1489](https://github.com/leo1489)            |[leonel](https://www.linkedin.com/in/leonel-revelo-tobar-516984213/)|
+|Mariana Vivas   |marianaivivas@gmail.com     |[marianaiv](https://github.com/marianaiv)        |[marianaiv](https://www.linkedin.com/in/marianaiv/)|
+
+# El repositorio<a name="repo"></a>
+En el repositorio se encuentran los siguientes archivos:
+- `airflow`: con los scripts de Airflow y de python para la carga histórica y continua de eventos sísmicos.
+- `dataset`: conjuntos de datos utilizados en el proyecto que no provienen de APIs.
+- `documentos`: documentos relacionados al desarrollo del proyecto.
+- `notebooks`: jupyter notebooks con pruebas para el desarrollo del proyecto.
+- `scripts`: aquí se encuentra el script para entrenar el modelo de aprendizaje automático.
+- `streamlit`: donde se encuentran los archivos con el código para las aplicaciones desarrolladas en streamlit.
+# Datos<a name="datos"></a>
+## Sísmicos
+Los datos sísmicos se obtuvieron de distintas fuentes dependiendo del país. Los datos de Estados Unidos fueron extraídos de [USGS](https://earthquake.usgs.gov), los de Japón de [IRIS](https://www.iris.edu/hq/) y los de México de dos fuentes: [SSN](http://www.ssn.unam.mx) para los datos históricos y USGS para la actualización continua.
+## Densidad poblacional
+En el análisis de sismos y la base de datos se incluyó información sobre la densidad poblacional de los estados de cada país. La información de todos los países fue proporcionada por entes gubernamentales y se listan a continuación:
+- [Estado Unidos](https://www.census.gov/programs-surveys/popest/data/tables.html)
+- [Japón](https://www.citypopulation.de/en/japan/cities/)
+- [México](https://en.www.inegi.org.mx/app/tabulados/interactivos/?pxq=Poblacion_Poblacion_07_9373f1b6-e6bd-409e-a44d-0c55485df94f)
+
+## Daños
+Fue necesario recopilar información sobre sobre muertes, lesiones, destrucción de casas y daños calculados por millón de dólares a causa de eventos sísmicos para ampliar el análisis. Estos fueron extraidos de fuentes directas del gobierno de Estados Unidos y se encuentran en este [link](https://www.usa.gov/government-works/).
+# Pipeline<a name="pipeline"></a>
+
+<p align="center">
+  <img src="figuras/pipeline.png" />
+</p>
+
+Una demostración del funcionamiento del pipeline se puede ver en [este video](https://www.youtube.com/watch?v=NQzYlH-22zY).
+
+# Modelo de agrupamiento de sismos<a name="modelo"></a>
+Para realizar el agrupamiento se utilizó K-Means con 4 grupos.
+
+El objetivo fue agrupar los sismos de acuerdo a su peligrosidad y para esto se utilizó el "indice de peligrosidad" que definimos como: $\frac{p}{m}$ donde *d* es la profundidad del foco del sismo y *m* la magnitud en escala Richter. Además utilizamos etiquetas de acuerdo a la definición dada por [World Bank](https://blogs.worldbank.org/sustainablecities/how-do-we-define-cities-towns-and-rural-areas) de ciudad, pueblo y zona rural según la densidad poblacional.
+
+El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link]()
+
+# Alerta sísmica<a name="alerta"></a>
+
+# Licencia<a name="licencia"></a>
 
 El uso de este trabajo está licenciado bajo [GNU General Public License v3.0 (GNU GPLv3)](https://choosealicense.com/licenses/gpl-3.0/).
