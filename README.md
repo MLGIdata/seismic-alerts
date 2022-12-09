@@ -100,9 +100,11 @@ Los grupos de clasificación se puede observar en dos dimensiones. Sin embargo, 
 
 El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link]()
 
+El script para entrenar el modelo de aprendizaje automático se encuentra en la carpeta `scripts` del repositorio.
 # Alerta sísmica<a name="alerta"></a>
+El alerta sísmica se diseñó para informar a la población mexicana sobre los sismos de una manera fácil de comprender para todo cualquier persona. El nivel de alerta está dado por la predicción de la peligrosidad del sismo hecha por el modelo de aprendizaje automático. Las recomendaciones sobre que hacer durante el sismo son distintas para las ciudades, pueblos y zonas rurales, de manera que sean realmente útiles para la comunidad.
 
-
+Esta aplicación fue realizada utilizando streamlit y se encuentre en [este link](alertasismicamexico.streamlit.app).
 # Licencia<a name="licencia"></a>
 
 El uso de este trabajo está licenciado bajo [GNU General Public License v3.0 (GNU GPLv3)](https://choosealicense.com/licenses/gpl-3.0/).
