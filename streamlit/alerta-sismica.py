@@ -41,9 +41,13 @@ rows, col_names = run_query(query)
 df = pd.DataFrame(rows, columns=col_names)
 
 # Colocamos una etiqueta de acuerdo a la densidad
-df.loc[df.density < 300,'densityLabel'] = 'rural'
-df.loc[(df.density < 1500) & (df.density > 300),'densityLabel'] = 'pueblo'
-df.loc[df.density > 1500,'densityLabel'] = 'ciudad'
+df.loc[df.density < 300,'densityLabel'] = 0
+df.loc[(df.density < 1500) & (df.density > 300),'densityLabel'] = 1
+df.loc[df.density > 1500,'densityLabel'] = 2
+
+df.loc[df.density < 300,'densityLabelStr'] = 'rural'
+df.loc[(df.density < 1500) & (df.density > 300),'densityLabelStr'] = 'pueblo'
+df.loc[df.density > 1500,'densityLabelStr'] = 'ciudad'
 
 # Colocamos la barra de arriba trasparente
 page_bg = """
@@ -71,7 +75,7 @@ with open("streamlit/data/model.pkl", "rb") as f:
     model = pickle.load(f)
 
 # Realizamos la predicción
-last_mx['cluster'] = model.predict(last_mx[['ratioT']])
+last_mx['cluster'] = model.predict(last_mx[['ratioT', 'densityLabel']])
 
 # Colocamos el label
 last_mx.loc[last_mx.cluster == 3, 'peligrosidad'] = 'muy baja'
@@ -143,7 +147,7 @@ with st.container():
         else:
             # Cuando los terremotos son de peligrosidad media o
             # alta, las recomendaciones varian con la densidad poblacional
-            tipoLocalidad = last_mx.iloc[0]['densityLabel']
+            tipoLocalidad = last_mx.iloc[0]['densityLabelStr']
 
             if tipoLocalidad == 'ciudad':
                 option = st.selectbox(
