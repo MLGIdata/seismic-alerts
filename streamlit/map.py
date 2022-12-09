@@ -28,9 +28,10 @@ def run_query(query):
         col_names = [i[0] for i in cur.description]
         return cur.fetchall(), col_names
 
-query = '''SELECT seism.date, seism.depth, seism.magnitude, seism.latitude, seism.longitude, seism.geoReference, location.country
+query = '''SELECT seism.date, seism.depth, seism.magnitude, seism.latitude, seism.longitude, seism.geoReference, location.country, density.density
             FROM seism
-            LEFT JOIN location ON location.idLocation = seism.idLocation'''
+            LEFT JOIN location ON location.idLocation = seism.idLocation
+            LEFT JOIN density ON density.idLocation = seism.idLocation'''
 
 rows, col_names = run_query(query)
 
@@ -47,11 +48,16 @@ scaler = StandardScaler()
 df['ratio'] = df.depth/df.magnitude
 df['ratioT'] = scaler.fit_transform(df.ratio.to_numpy().reshape(-1,1))
 
+# Colocamos una etiqueta de acuerdo a la densidad
+df.loc[df.density < 300,'densityLabel'] = 0
+df.loc[(df.density < 1500) & (df.density > 300),'densityLabel'] = 1
+df.loc[df.density > 1500,'densityLabel'] = 2
+
 with open("streamlit/data/model.pkl", "rb") as f:
     model = pickle.load(f)
 
 # Realizamos la predicción
-df['cluster'] = model.predict(df[['ratioT']])
+df['cluster'] = model.predict(df[['ratioT', 'densityLabel']])
 
 # Agregamos colores
 df.loc[df.cluster == 0,'r'], df.loc[df.cluster == 0,'g'], df.loc[df.cluster == 0,'b'], df.loc[df.cluster == 0,'a']= [200, 30, 0, 160]
