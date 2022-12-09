@@ -76,7 +76,7 @@ with st.container():
     with legend:
         st.markdown('# ')
         st.markdown('### Threat level')
-        st.image('figures/threat.png', width=170)
+        st.image('streamlit/figures/threat.png', width=170)
     
 
 with st.container():
