@@ -11,7 +11,13 @@
 - [Equipo ](#equipo-)
 - [El repositorio](#el-repositorio)
 - [Datos](#datos)
+  - [Sísmicos](#sísmicos)
+  - [Densidad poblacional](#densidad-poblacional)
+  - [Daños](#daños)
 - [Pipeline](#pipeline)
+  - [Procesamiento de datos](#procesamiento-de-datos)
+  - [Almacenamiento](#almacenamiento)
+  - [Esquema de la base de datos](#esquema-de-la-base-de-datos)
 - [Modelo de agrupamiento de sismos](#modelo-de-agrupamiento-de-sismos)
 - [Alerta sísmica](#alerta-sísmica)
 - [Licencia](#licencia)
@@ -92,7 +98,7 @@ Los grupos de clasificación se puede observar en dos dimensiones. Sin embargo, 
   <img src="figuras/groups.png" />
 </p>
 
-El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link]().
+El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link](https://seismap.streamlit.app/).
 
 El script para entrenar el modelo de aprendizaje automático se encuentra en la carpeta `scripts` del repositorio.
 # Alerta sísmica<a name="alerta"></a>
