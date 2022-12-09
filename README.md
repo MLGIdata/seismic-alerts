@@ -14,7 +14,13 @@
 - [Equipo ](#equipo-)
 - [El repositorio](#el-repositorio)
 - [Datos](#datos)
+  - [Sísmicos](#sísmicos)
+  - [Densidad poblacional](#densidad-poblacional)
+  - [Daños](#daños)
 - [Pipeline](#pipeline)
+  - [Procesamiento de datos](#procesamiento-de-datos)
+  - [Almacenamiento](#almacenamiento)
+  - [Esquema de la base de datos](#esquema-de-la-base-de-datos)
 - [Modelo de agrupamiento de sismos](#modelo-de-agrupamiento-de-sismos)
 - [Alerta sísmica](#alerta-sísmica)
 - [Licencia](#licencia)
@@ -97,11 +103,19 @@ Los grupos de clasificación se puede observar en dos dimensiones. Sin embargo, 
 
 El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link](https://seismap.streamlit.app/).
 
+<p align="center">
+  <img src="figuras/interactive-map.png" />
+</p>
+
 El script para entrenar el modelo de aprendizaje automático se encuentra en la carpeta `scripts` del repositorio.
 # Alerta sísmica<a name="alerta"></a>
 El alerta sísmica se diseñó para informar a la población mexicana sobre los sismos de una manera fácil de comprender para todo cualquier persona. El nivel de alerta está dado por la predicción de la peligrosidad del sismo hecha por el modelo de aprendizaje automático. Las recomendaciones sobre que hacer durante el sismo son distintas para las ciudades, pueblos y zonas rurales, de manera que sean realmente útiles para la comunidad.
 
 Esta aplicación fue realizada utilizando streamlit y se encuentre en [este link](https://alertasismicamexico.streamlit.app).
+
+<p align="center">
+  <img src="figuras/alert.png" />
+</p>
 # Licencia<a name="licencia"></a>
 
 El uso de este trabajo está licenciado bajo [GNU General Public License v3.0 (GNU GPLv3)](https://choosealicense.com/licenses/gpl-3.0/).

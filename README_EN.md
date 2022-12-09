@@ -11,7 +11,13 @@
 - [Team ](#team-)
 - [The repository](#the-repository)
 - [Data](#data)
+  - [Seismic](#seismic)
+  - [Population density](#population-density)
+  - [Damages](#damages)
 - [Pipeline](#pipeline)
+  - [Data Processing](#data-processing)
+  - [Storage](#storage)
+  - [Database schema](#database-schema)
 - [Seismic clustering model](#seismic-clustering-model)
 - [Seismic alert](#seismic-alert)
 - [License](#license)
@@ -94,11 +100,20 @@ The classification groups can be observed in two dimensions. However, the differ
 
 The result of the classification can be visualized in an interactive map made in streamlit where the last 1000 earthquakes per country are plotted. It can be found at [this link](https://seismap.streamlit.app/).
 
+<p align="center">
+  <img src="figuras/interactive-map.png" />
+</p>
+
 The script for training the machine learning model is located in the `scripts` folder of the repository.
 # Seismic alert<a name="alerta"></a>
 The seismic alert was designed to inform the Mexican population about earthquakes in a way that is easy to understand for everyone. The level of alert is given by the prediction of the danger of the earthquake made by the automatic learning model. The recommendations on what to do during the earthquake are different for cities, towns and rural areas, so that they are really useful for the community.
 
-This application was made using streamlit and can be found at [this link].(alertasismicamexico.streamlit.app).
+This application was made using streamlit and can be found at [this link](alertasismicamexico.streamlit.app).
+
+<p align="center">
+  <img src="figuras/alert.png" />
+</p>
+
 # License<a name="licencia"></a>
 
 The use of this work is licensed under [GNU General Public License v3.0 (GNU GPLv3)](https://choosealicense.com/licenses/gpl-3.0/).
