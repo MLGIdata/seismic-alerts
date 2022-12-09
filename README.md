@@ -15,6 +15,9 @@
   - [Densidad poblacional](#densidad-poblacional)
   - [Daños](#daños)
 - [Pipeline](#pipeline)
+  - [Procesamiento de datos](#procesamiento-de-datos)
+  - [Almacenamiento](#almacenamiento)
+  - [Esquema de la base de datos](#esquema-de-la-base-de-datos)
 - [Modelo de agrupamiento de sismos](#modelo-de-agrupamiento-de-sismos)
 - [Alerta sísmica](#alerta-sísmica)
 - [Licencia](#licencia)
@@ -58,25 +61,41 @@ En el análisis de sismos y la base de datos se incluyó información sobre la d
 - [Estado Unidos](https://www.census.gov/programs-surveys/popest/data/tables.html)
 - [Japón](https://www.citypopulation.de/en/japan/cities/)
 - [México](https://en.www.inegi.org.mx/app/tabulados/interactivos/?pxq=Poblacion_Poblacion_07_9373f1b6-e6bd-409e-a44d-0c55485df94f)
-
 ## Daños
 Fue necesario recopilar información sobre sobre muertes, lesiones, destrucción de casas y daños calculados por millón de dólares a causa de eventos sísmicos para ampliar el análisis. Estos fueron extraidos de fuentes directas del gobierno de Estados Unidos y se encuentran en este [link](https://www.usa.gov/government-works/).
 # Pipeline<a name="pipeline"></a>
+## Procesamiento de datos
+Airflow se encarga de correr DAGs individuales para cada pais en donde los datos son transformados hacia un estandar, donde posteriormente son subidos a un balde AWS S3.
+## Almacenamiento
+Todo esta almacenado en servicios de AWS, donde el balde AWS S3 al recibir los datos estandarizados necesita de AWS Glue como interprete y transportador para poder llevarlos hacia una base de datos MySQL montada en AWS RDS.
+## Esquema de la base de datos
+Tiene un esquema de copo de nieve donde se usa la tabla de hechos seism como centro, las tablas location y density proveen mas informacion al analysta al hacer queries, pero solo si le es necesaria Despues de que el dato es cargado en AWS RDS, ya es libre de ser accedido posteriormente por:
+- El modelo de Machine Learning basado en la libreria de Scikit-learn
+- La pagina web de alertas montada en Streamlit
+- El dashboard analitico hecho en Power Bi
 
+Un diagrama del pipeline se encuentra a continuación:
 <p align="center">
   <img src="figuras/pipeline.png" />
 </p>
 
-Una demostración del funcionamiento del pipeline se puede ver en [este video](https://www.youtube.com/watch?v=NQzYlH-22zY).
+Una demostración del funcionamiento se puede ver en [este video](https://www.youtube.com/watch?v=NQzYlH-22zY).
 
 # Modelo de agrupamiento de sismos<a name="modelo"></a>
 Para realizar el agrupamiento se utilizó K-Means con 4 grupos.
 
 El objetivo fue agrupar los sismos de acuerdo a su peligrosidad y para esto se utilizó el "indice de peligrosidad" que definimos como: $\frac{p}{m}$ donde *d* es la profundidad del foco del sismo y *m* la magnitud en escala Richter. Además utilizamos etiquetas de acuerdo a la definición dada por [World Bank](https://blogs.worldbank.org/sustainablecities/how-do-we-define-cities-towns-and-rural-areas) de ciudad, pueblo y zona rural según la densidad poblacional.
 
+Los grupos de clasificación se puede observar en dos dimensiones. Sin embargo, no se observa la diferencia entre dos de los grupos porque en la clasificación se utilizaron 3 variables: dos de forma implicita en la variable de peligrosidad y las etiquetas de densidad.
+
+<p align="center">
+  <img src="figuras/groups.png" />
+</p>
+
 El resultado de la clasificación se puede visualizar en un mapa interactivo realizado en streamlit donde se grafican los ultimos 1000 sismos por país. Se encuentra en [este link]()
 
 # Alerta sísmica<a name="alerta"></a>
+
 
 # Licencia<a name="licencia"></a>
 
