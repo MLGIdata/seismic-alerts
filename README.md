@@ -11,7 +11,13 @@
 - [Equipo ](#equipo-)
 - [El repositorio](#el-repositorio)
 - [Datos](#datos)
+  - [Sísmicos](#sísmicos)
+  - [Densidad poblacional](#densidad-poblacional)
+  - [Daños](#daños)
 - [Pipeline](#pipeline)
+  - [Procesamiento de datos](#procesamiento-de-datos)
+  - [Almacenamiento](#almacenamiento)
+  - [Esquema de la base de datos](#esquema-de-la-base-de-datos)
 - [Modelo de agrupamiento de sismos](#modelo-de-agrupamiento-de-sismos)
 - [Alerta sísmica](#alerta-sísmica)
 - [Licencia](#licencia)
@@ -33,7 +39,7 @@ Esto se logró mediante:
 # Equipo <a name="equipo"></a>
 |Nombre          | Correo                     | GitHub                                          | Linkedin|
 |----------------|----------------------------|-------------------------------------------------|---------|
-|Gustavo Martínez|martinezb.mail@gmail.com    |[gusofficial](https://github.com/gusofficial)    | -       |
+|Gustavo Martínez|martinezb.mail@gmail.com    |[gusofficial](https://github.com/gusofficial)    |[gustavo](https://www.linkedin.com/in/gustavo-mart%C3%ADnez-b8027a65/)|
 |Iván Dellanque  |ivandellanque01@gmail.com   |[IDell49](https://github.com/IDell49)            |[ivandellanque](https://www.linkedin.com/in/ivandellanque/)|
 |Matias Harper   |matiasnaranjo_14@hotmail.com|[Matias-Harper](https://github.com/Matias-Harper)|[matias-naranjo-harper](https://www.linkedin.com/in/matias-naranjo-harper/)|
 |Leonel Revelo   |leonel_revelo@hotmail.com   |[leo1489](https://github.com/leo1489)            |[leonel](https://www.linkedin.com/in/leonel-revelo-tobar-516984213/)|
