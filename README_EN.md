@@ -11,7 +11,13 @@
 - [Team ](#team-)
 - [The repository](#the-repository)
 - [Data](#data)
+  - [Seismic](#seismic)
+  - [Population density](#population-density)
+  - [Damages](#damages)
 - [Pipeline](#pipeline)
+  - [Data Processing](#data-processing)
+  - [Storage](#storage)
+  - [Database schema](#database-schema)
 - [Seismic clustering model](#seismic-clustering-model)
 - [Seismic alert](#seismic-alert)
 - [License](#license)
@@ -89,7 +95,7 @@ The objective was to group the earthquakes according to their dangerousness and 
 The classification groups can be observed in two dimensions. However, the difference between two of the groups is not observed because 3 variables were used in the classification: two implicitly in the hazard variable and the density labels.
 
 <p align="center">
-  <img src="figuras/groups.png" />
+  <img src="figuras/groups_en.png" />
 </p>
 
 The result of the classification can be visualized in an interactive map made in streamlit where the last 1000 earthquakes per country are plotted. It can be found at [this link](https://seismap.streamlit.app/).
