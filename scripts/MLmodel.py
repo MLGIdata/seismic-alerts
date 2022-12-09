@@ -15,13 +15,14 @@ my_conn = create_engine("mysql://admin:{clave}@seismic-mysqldatabase.clzvii6srvy
 conn = my_conn.connect()
 
 # Importamos el dataset
-query = '''SELECT seism.*
-            FROM seism;'''
+query = '''SELECT seism.*, density.density
+            FROM seism
+            LEFT JOIN density ON density.idLocation=seism.idLocation;'''
 X = pd.read_sql(query,my_conn)
 X.head()
 
 # Creando nuevo dataframe
-X = X[['magnitude','depth']].copy()
+X = X[['magnitude','depth','density']].copy()
 X.head()
 
 # Calculamos y escalamos la variable a utilizar
@@ -29,9 +30,14 @@ scaler = StandardScaler()
 X['ratio'] = X.depth/X.magnitude
 X['ratioT'] = scaler.fit_transform(X.ratio.to_numpy().reshape(-1,1))
 
+# Colocamos una etiqueta de acuerdo a la densidad
+X.loc[X.density < 300,'densityLabel'] = 0
+X.loc[(X.density < 1500) & (X.density > 300),'densityLabel'] = 1
+X.loc[X.density > 1500,'densityLabel'] = 2
+
 # Entrenamos el modelo
 model = KMeans(n_clusters=4, random_state=9)
-model.fit(X[['ratioT']])
+model.fit(X[['ratioT','densityLabel']])
 
 # Guardamos el modelo entrenado
 with open("../streamlit/data/model.pkl", "wb") as f:
