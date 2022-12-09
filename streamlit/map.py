@@ -12,6 +12,17 @@ st.set_page_config(
     layout="wide"
 )
 
+# Colocamos la barra de arriba trasparente
+page_bg = """
+<style>
+[data-testid="stHeader"] {
+    background-color: rgba(0, 0, 0, 0);
+}
+<\style>
+"""
+
+st.markdown(page_bg, unsafe_allow_html=True)
+
 # Conexión a MySQL en RDS
 # Inicializamos la conexión
 def init_connection():
