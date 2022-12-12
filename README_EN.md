@@ -27,7 +27,7 @@ Taking into account the short-term improvements, we proposed a project in which:
   
 These goals were achieved by:
 - Creating a standardized database using MySQL on the AWS RDS service, with automated loading with Airflow.
-- The development of an unsupervised learning model for classifying earthquakes according to their "dangerousness."
+- The development of an unsupervised learning model for classifying earthquakes according to their "threat level".
 - The implementation of a Seismic alert for Mexico that informs about the danger of an earthquake according to the model described above and recommendations according to population characteristics of the place of the event.
 
 # Team <a name="equipo"></a>
@@ -84,7 +84,7 @@ A demonstration of the operation can be seen in [this video].(https://www.youtub
 # Seismic clustering model<a name="modelo"></a>
 To perform the grouping we used K-Means with 4 groups.
 
-The objective was to group the earthquakes according to their dangerousness and for this we used the "dangerousness index" that we defined as: $\frac{p}{m}$ where *d* is the depth of the focus of the earthquake and *m* the magnitude in Richter scale. We also use labels according to the definition given by [World Bank](https://blogs.worldbank.org/sustainablecities/how-do-we-define-cities-towns-and-rural-areas) of city, town and rural area according to population density.
+The objective was to group the earthquakes according to their threat level and for this we used the "threat index" that we defined as: $\frac{p}{m}$ where *d* is the depth of the focus of the earthquake and *m* the magnitude in Richter scale. We also use labels according to the definition given by [World Bank](https://blogs.worldbank.org/sustainablecities/how-do-we-define-cities-towns-and-rural-areas) of city, town and rural area according to population density.
 
 The classification groups can be observed in two dimensions. However, the difference between two of the groups is not observed because 3 variables were used in the classification: two implicitly in the hazard variable and the density labels.
 
