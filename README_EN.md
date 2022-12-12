@@ -79,7 +79,7 @@ A diagram of the pipeline can be found below:
   <img src="figuras/pipeline.png" />
 </p>
 
-A demonstration of the operation can be seen in [this video].(https://www.youtube.com/watch?v=NQzYlH-22zY).
+A demonstration of the operation can be seen in [this video](https://www.youtube.com/watch?v=NQzYlH-22zY).
 
 # Seismic clustering model<a name="modelo"></a>
 To perform the grouping we used K-Means with 4 groups.
