@@ -1,4 +1,4 @@
-<h1 align="center"> Sistema de alertas sísmicas </h1>
+<h1 align="center"> MLGI: alertas sísmicas México</h1>
 
 > “Working towards global standardization of seismological networks and effective communication to the civilian community. ”
 
