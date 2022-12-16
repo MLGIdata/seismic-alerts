@@ -1,4 +1,4 @@
-<h1 align="center"> Seismic warning system </h1>
+<h1 align="center"> MLGI: seismic alerts Mexico </h1>
 
 > “Working towards global standardization of seismological networks and effective communication to the civilian community. ”
 
@@ -33,7 +33,7 @@ These goals were achieved by:
 # Team <a name="equipo"></a>
 |Name        | E-mail                | GitHub                                          | Linkedin|
 |----------------|----------------------------|-------------------------------------------------|---------|
-|Gustavo Martínez|martinezb.mail@gmail.com    |[gusofficial](https://github.com/gusofficial)    |[gustavo-martinezb](www.linkedin.com/in/gustavo-martinezb)|
+|Gustavo Martínez|martinezb.mail@gmail.com    |[gusofficial](https://github.com/gusofficial)    |[gustavo-martinezb](https://www.linkedin.com/in/gustavo-martinezb/)|
 |Iván Dellanque  |ivandellanque01@gmail.com   |[IDell49](https://github.com/IDell49)            |[ivandellanque](https://www.linkedin.com/in/ivandellanque/)|
 |Matias Harper   |matiasnaranjo_14@hotmail.com|[Matias-Harper](https://github.com/Matias-Harper)|[matias-naranjo-harper](https://www.linkedin.com/in/matias-naranjo-harper/)|
 |Leonel Revelo   |leonel_revelo@hotmail.com   |[leo1489](https://github.com/leo1489)            |[leonel](https://www.linkedin.com/in/leonel-revelo-tobar-516984213/)|
