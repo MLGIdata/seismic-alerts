@@ -107,6 +107,10 @@ Esta aplicación fue realizada utilizando streamlit. Un video de como se ve el a
 
 https://user-images.githubusercontent.com/53548707/206768374-b9a22864-963c-42a8-965d-5e96a0463f49.mp4
 
+Video presentación:
+
+[![Alt text](https://img.youtube.com/vi/FwTQNhgZuj8&t=65s/0.jpg)](https://www.youtube.com/watch?v=FwTQNhgZuj8&t=65s)
+
 
 # Licencia<a name="licencia"></a>
 
